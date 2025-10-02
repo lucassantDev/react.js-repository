@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +38,7 @@
     </style>
 </head>
 
-<body className="text-(--text) font-(--font-sans)">
+<body class="text-(--text) font-(--font-sans)">
 
     <div id="root"></div>
 
@@ -116,16 +116,54 @@
             )
         }
 
-        function Calculator(){
+        function CalculatorDisplay({operator, result}){
+            return (
+                <div className={`
+                    flex flex-col gap-2 px-[1.375rem]
+                    cursor-default select-none
+                `}>
 
+                    <Text as="div" variant="muted" className="flex items-center justify-end">
+
+                        1 + 1
+                        
+                    </Text>
+
+                    <div className={`flex items-center justify-between`}>
+                        <Text variant="muted">=</Text>
+                        <Text variant="blast">{result}</Text>
+                    </div>
+
+                </div>
+
+            )
         }
-        
+
+        function Calculator(){ 
+            return (
+                <Card className={`
+                    flex flex-col gap-[1.625rem] w-[22.25rem]
+                    pt-14 px-8 pb-8
+                    `}
+                >
+
+                <Calculator operation="1 + 1" result="2"/>
+
+                <div className='flex flex-col gap-3'>
+                    <div className='flex gap-3'>
+                        <Button className='w-16 h-16'>CE</Button>
+                        <Button className='flex-1 h-16'>C</Button>
+                    </div>
+                </div>
+
+                </Card>
+            )
+        }
+
         function App(){
             return(
                 <main className="py-28 px-4">
-                <Card>
-                    Testando calculadora
-                </Card>
+                <Calculator/>
                 </main>
             )
         }
