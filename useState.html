@@ -23,10 +23,20 @@
     <script type='text/babel'>
 
         function Counter(){
+            const [counter, setCounter] = React.useState(100);
+
             return(
                 <>
-                    <p>Contador: </p>
-                    <button>Atualizar</button>
+                    <p>Contador: {counter} </p>
+                    <button onClick={() => setCounter(10)}>Atualizar</button>
+
+                    <button onClick={() => setCounter ((prevValue) => prevValue + 1)}>
+                        Incrementar
+                    </button>
+
+                    <button onClick={() => setCounter ((prevValue) => prevValue - 1)}>
+                        Decrementar
+                    </button>
                 </>
             )
         }
@@ -34,7 +44,7 @@
         function App(){
             return(
                 <main class="p-3">
-                  ...
+                  <Counter />
                 </main>
             )
         }
